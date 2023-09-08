@@ -1,0 +1,17 @@
+/*
+    home.css: This website contains selectors only used in home.css
+
+    All pages share the styles on index.css but you should create 
+    one more css for each page that will contain the selected used 
+    on that page only (the ones not reused in other pages).
+*/
+.formWrappa{
+    background-color: hsl(125, 51%, 17%);
+}
+.text-light{
+    text-shadow: 3px 4px 15px rgb(223, 233, 138),5px 9px 30px rgb(208, 211, 184),2px 7px 25px rgb(97, 201, 102);
+}
+.form-control{
+    background-color: rgb(3, 43, 3);
+    box-shadow: 1px 4px 15px rgb(223, 233, 138)
+}

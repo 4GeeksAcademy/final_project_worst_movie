@@ -1,27 +1,20 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/login.css";
+import React from "react";
 
-export const Login = () => {
-	const { store, actions } = useContext(Context);
-
-	return (
+export const LogIn=()=>{
+    return(
+      
         <form>
-        <h1 className="text-light">Wellcome  to Your Best Worst Movie Log in.</h1>
-        <div className="formWrappa">
+        <h1>Wellcome  to Your Best Worst Movie Log in.</h1>
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label text-warning">Email address</label>
+          <label for="exampleInputEmail1" className="form-label">Email address</label>
           <input type="email" className="form-control" placeholder="Type your email adress here" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-          <div id="emailHelp" className="form-text text-light">We'll never share your email with anyone else.</div>
+          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label text-warning">Password</label>
+          <label for="exampleInputPassword1" className="form-label">Password</label>
           <input type="password" className="form-control"  placeholder="Type your password here" id="exampleInputPassword1"/>
         </div>
-        <div className="text-center">
         <button type="submit" className="btn btn-primary">Log in</button>
-        </div>
         <p className="text-danger">
             -Suspense music-  Oh Lord!...Have you... 
             forgotten your... password?!!!!!-Tension, pain..
@@ -34,13 +27,7 @@ export const Login = () => {
          Guess what? You're in the 'Not Registered' club! Time for a wild
           adventure—off to the registration form you go!
         </p>
-        <div className="text-center">
         <button type="submit" className="btn btn-primary">Sign up.</button>
-        </div>
-       </div>
       </form>
-       
-       
          );
     };
-	
