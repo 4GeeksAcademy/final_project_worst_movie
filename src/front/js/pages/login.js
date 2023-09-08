@@ -1,6 +1,6 @@
 import React from "react";
 
-export const logIn=()=>{
+export const LogIn=()=>{
     return(
       
         <form>

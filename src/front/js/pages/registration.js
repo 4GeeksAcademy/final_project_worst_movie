@@ -1,6 +1,6 @@
 import React from "react";
 
-export const registration=()=>{
+export const Registration=()=>{
     return(
         <form>
         <div className="mb-3">
