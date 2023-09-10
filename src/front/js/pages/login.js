@@ -29,7 +29,7 @@ export const Login = () => {
             .-Or... do you... need to... reset it?
         </p>
         <input type="email" className="form-control"
-         placeholder="Typer here your email adress to receive a resset link" 
+         placeholder="Type here your email adress to receive a resset link" 
         id="exampleInputEmail1" aria-describedby="emailHelp"/>
          <button type="submit" className="btn btn-primary">Send link</button>
          <p className="text-danger">
