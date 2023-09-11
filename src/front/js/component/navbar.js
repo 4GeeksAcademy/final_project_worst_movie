@@ -12,7 +12,7 @@ export const Navbar = () => {
 						</span>
 				</Link>
 				<div className="ml-auto">
-					<Link to="/demo">
+					<Link to="/login">
 						<button className="btn btn-primary">Log in.</button>
 					</Link>
 				</div>

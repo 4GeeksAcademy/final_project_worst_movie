@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import { Link } from "react-router-dom";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/login.css";
 
 export const Login = () => {
-	const { store, actions } = useContext(Context);
 
 	return (
         <form className="text-center">
