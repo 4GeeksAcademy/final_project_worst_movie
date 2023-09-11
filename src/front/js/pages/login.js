@@ -21,15 +21,9 @@ export const Login = () => {
         <div className="text-center">
         <button type="submit" className="btn btn-primary">Log in</button>
         </div>
-        <p className="text-danger">
-            -Suspense music-  Oh Lord!...Have you... 
-            forgotten your... password?!!!!!-Tension, pain..
-            .-Or... do you... need to... reset it?
-        </p>
-        <input type="email" className="form-control"
-         placeholder="Type here your email adress to receive a resset link" 
-        id="exampleInputEmail1" aria-describedby="emailHelp"/>
-         <button type="submit" className="btn btn-primary">Send link</button>
+        <Link to="/resset">
+          <p className="text-light">Forgot your username or password?</p>
+       </Link>
          <p className="text-danger">
          Guess what? You're in the 'Not Registered' club! Time for a wild
           adventure—off to the registration form you go!
