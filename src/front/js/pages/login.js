@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/login.css";
 
@@ -37,7 +38,9 @@ export const Login = () => {
           adventure—off to the registration form you go!
         </p>
         <div className="text-center">
-        <button type="submit" className="btn btn-primary">Sign up.</button>
+       <Link to="/registration">
+       <button type="submit" className="btn btn-primary">Sign up.</button>
+       </Link>
         </div>
        </div>
         </div>
