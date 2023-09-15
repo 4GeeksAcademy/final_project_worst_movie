@@ -2,6 +2,10 @@ nav{
     background-color: rgb(56, 5, 5);
     border-style: groove;
     box-shadow: 1px 4px 15px rgb(164, 223, 208)
+   
+}
+nav{
+    border-radius: 15%;
 }
 .btn{
     border-radius: 15%;
