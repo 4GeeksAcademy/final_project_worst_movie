@@ -46,6 +46,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			signUp:(username,name, email, password)=>{
+				var options= {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ username:username,name:name,email:email, password:password }) 
+				}
+				fetch(process.env.BACKEND_URL+'/api/registration',options)
+				.then(response=>{
+					if (response.ok) return response.json()
+					else throw Error('Something went wrong')
+				})
+				.then(data=>{
+					console.log(data)
+				})
+				.catch(error=>{
+					console.log(error)
+				})
+			},
+			logIn:(email, password)=>{
+				var options= {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email:email, password:password }) 
+				}
+				fetch(process.env.BACKEND_URL+'/api/login',options)
+				.then(response=>{
+					if (response.ok) return response.json()
+					else throw Error('Something went wrong')
+				})
+				.then(data=>{
+					console.log(data)
+				})
+				.catch(error=>{
+					console.log(error)
+				})
 			}
 		}
 	};

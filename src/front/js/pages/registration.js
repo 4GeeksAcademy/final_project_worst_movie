@@ -1,14 +1,16 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import "../../styles/registration.css";
-
+import { Context } from "../store/appContext";
 export const Registration=()=>{
   const[userName,setUserName]=useState();
+  const { store, actions } = useContext(Context);
   const[name,setName]=useState();
   const[email,setEmail]=useState();
   const[password, setPassword]=useState();
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(userName, name,email);
+    actions.signUp(userName, name, email, password);
    
   };
     return(
@@ -19,7 +21,7 @@ export const Registration=()=>{
        <div className=" formWrappa2 mb-3">
        <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label">Username.</label>
-          <input type="password" className="form-control" placeholder=
+          <input type="text" className="form-control" placeholder=
           
            "Type your username" id="exampleInputPassword1" onChange={(e) => setUserName(e.target.value)}
            />

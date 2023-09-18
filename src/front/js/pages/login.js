@@ -1,14 +1,17 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
   const[email,setEmail]=useState();
   const[password, setPassword]=useState();
+  const { store, actions } = useContext(Context);
  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);  
+    actions.logIn(email, password);
   };
 
 	return (
