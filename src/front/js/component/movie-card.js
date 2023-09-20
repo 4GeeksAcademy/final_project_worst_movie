@@ -26,7 +26,9 @@ export const MovieCard = (props) => {
                         <div className="card-bottom">
                             <div className="d-flex mb-3">
                                 <p className="rating m-0 p-0">{props.rating} / 10 <i className="yellow fas fa-star"></i></p>
+                                <Link to={`/detail/${props.id}`}>
                                 <button type="button" className="info-button btn btn-outline-light">More Info!</button>
+                                </ Link>
                             </div>
                             <h6 className="lighter" onClick={() => includesItem()}><i className="yellow fas fa-plus"></i> Add to watchlist</h6>
                             <h6 className="lighter"><i className="red fas fa-play-circle"></i> Watch Trailer</h6>

@@ -110,7 +110,7 @@ export const Home = () => {
 								</div>
 							) : <div>
 								{store.watchlist?.map((movies, index) => (
-									<Watchlist_Item img_src={movies.img_src} title={movies.title} rating={movies.rating} index={index} />
+									<Watchlist_Item img_src={movies.img_src} title={movies.title} rating={movies.rating} index={index} id={movies.id}/>
 								))} </div>
 							}
 						</div>
@@ -131,19 +131,19 @@ export const Home = () => {
 				<h1 className="genre-title title mt-5 mb-3"><i className="light-yellow fas fa-caret-right"></i> Horror</h1>
 				<div className="movies-by-genre-section h-scrollbar d-flex">
 					{store.horror_movies?.map((movies) => (
-						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} />
+						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} id={movies.id}/>
 					))}
 				</div>
 				<h1 className="genre-title title mt-5 mb-3"><i className="light-yellow fas fa-caret-right"></i> Drama</h1>
 				<div className="movies-by-genre-section h-scrollbar d-flex">
 					{store.drama_movies?.map((movies) => (
-						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} />
+						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} id={movies.id}/>
 					))}
 				</div>
 				<h1 className="genre-title title mt-5 mb-3"><i className="light-yellow fas fa-caret-right"></i> Action</h1>
 				<div className="movies-by-genre-section h-scrollbar d-flex">
 					{store.action_movies?.map((movies) => (
-						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} />
+						<MovieCard img_src={movies.poster_path} title={movies.title} rating={movies.vote_average} id={movies.id}/>
 					))}
 				</div>
 			</div>
