@@ -6,12 +6,10 @@
     on that page only (the ones not reused in other pages).
 */
 .superFormWrappa{
-   padding-left: 8cm;
+ 
 }
-.formWrappa{
+.formWrappal{
     background-color: hsl(125, 51%, 17%);
-    height: 785px;
-    width: 725px;
     border-radius: 6%;
 }
 

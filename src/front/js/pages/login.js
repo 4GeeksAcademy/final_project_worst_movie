@@ -18,7 +18,7 @@ export const Login = () => {
         <form className="text-center"onSubmit={handleSubmit}>
         <h1 className="text-light">Wellcome  to Your Best Worst Movie Log in.</h1>
         <div className="superFormWrappa ">
-        <div className="formWrappa ">
+        <div className="formWrappal ">
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label text-warning">Email address</label>
           <input type="email" className="form-control" 

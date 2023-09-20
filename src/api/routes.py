@@ -52,15 +52,10 @@ def resset():
     email = request.json.get("email", None)
     password = request.json.get("password", None) 
     existing_user_email=User.query.filter_by(email=email).first()
-    if  existing_user_email is  not None:
-     return jsonify({"msg": "Allright, set your new password."}), 200
- 
-    user=User(
-       email=email,
-       password=password,
-       is_active=True
-    )
-    db.session.add(user)
+    if  existing_user_email is  None:
+     return jsonify({"msg": "User don´t exist"}), 400
+    existing_user_email.password=password
+    
     db.session.commit()
     return jsonify({"msg": "Allrrrright!! User password resseted succesfully"}), 200
    

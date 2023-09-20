@@ -89,7 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email:email, password:password }) 
 				}
-				fetch(process.env.BACKEND_URL+'/api/resset',options)
+				fetch(process.env.BACKEND_URL+'api/resset',options)
 				.then(response=>{
 					if (response.ok) return response.json()
 					else throw Error('Something went wrong')
