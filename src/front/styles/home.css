@@ -5,3 +5,214 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+body {
+   background-color: black; 
+}
+
+.main-wrapper {
+    margin: 60px;
+}
+
+/* Movie Section */
+.main-title {
+    color: white;
+    font-family: 'Press Start 2P';
+    font-weight: bold;
+}
+
+.title {
+    color: white;
+    font-family: 'Bungee';
+}
+
+.genre-title {
+    text-shadow: 0 0 20px rgba(255, 253, 236, 0.811);
+}
+
+.really-bad-text {
+    color: rgb(255, 245, 169);
+    text-shadow: 0 0 20px rgba(255, 246, 182, 0.871);
+}
+
+.wrapper-first-section {
+    margin-bottom: 100px;
+}
+
+.main-topt-img {
+    width: 97%;
+    margin: 10px;
+    object-fit: fill;
+}
+
+.restof-topt-section {
+    width: 100%;
+}
+
+.sec-topt-img {
+    width: 92%;
+    margin: 10px;
+    object-fit: fill;
+}
+
+.main-icon {
+    font-size: 120px;
+    color: rgb(255, 236, 93);
+    text-shadow: 0 0 20px rgb(255, 243, 156);
+    margin-right: 30px;
+}
+
+.icon {
+    font-size: 165px;
+    color: rgb(255, 236, 93);
+    text-shadow: 0 0 20px rgb(255, 243, 156);
+    margin-right: 35px;
+    margin-left: 20px;
+}
+
+.purple-title {
+    color: rgb(133, 81, 210);
+    text-shadow: 0 0 40px rgb(210, 194, 233)
+}
+
+.light-yellow {
+    color: rgb(255, 255, 216);
+}
+
+.image-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.main-floating-title {
+    position: absolute;
+    color: white;
+    padding-top: 100px;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        transparent
+    );
+    text-align: -webkit-left;
+}
+
+.floating-title {
+    position: absolute;
+    color: white;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-bottom: 15px;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        transparent
+    );
+    text-align: -webkit-left;
+}
+
+.bold-fl-title {
+    font-weight: lighter;
+}
+
+/*.bold-fl-title:hover {
+    font-weight: bold;
+}*/
+
+
+/**** Scrollbar ****/
+.y-scrollbar {
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.y-scrollbar::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+ 
+/* Track */
+.y-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(44, 43, 43, 0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 20px;
+}
+ 
+/* Handle */
+.y-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.836); 
+}
+/* Beginning of the other scrollbar */
+.h-scrollbar {
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.h-scrollbar div {
+    width: 270px;
+    margin-bottom: 5px;
+}
+
+.h-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 11px;
+}
+ 
+/* Track */
+.h-scrollbar::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 20px;
+}
+ 
+/* Handle */
+.h-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.836); 
+}
+/**** End of Scrollbar ****/
+
+/* Sidebar Section */
+.sidebar-section {
+    background-color: rgb(30, 30, 30);
+    /*width: 35%;*/
+    border-radius: 5px;
+}
+
+.watchlist-items {
+    height: 920px;
+}
+
+.watchlist-title {
+    text-shadow: 0 0 20px rgb(255, 246, 179);
+}
+
+.empty-watchlist {
+    color: rgba(235, 235, 235, 0.87);
+}
+
+.button-link {
+    text-decoration: none;
+    color: black;
+}
+
+.button-link:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.fa-bookmark {
+    color: rgb(213, 213, 213);
+    text-shadow: 0 0 20px rgba(235, 232, 232, 0.551);
+}

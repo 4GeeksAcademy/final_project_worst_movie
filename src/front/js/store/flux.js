@@ -2,6 +2,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			horror_movies: [],
+			drama_movies: [],
+			action_movies: [],
+			watchlist: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -16,6 +20,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			getHorrorMovies: () => {
+				const store = getStore();
+
+				fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIEDB_API_KEY}&vote_average.lte=5.1&sort_by=vote_average.asc&with_genres=27&vote_average.gte=2&vote_count.gte=800`).then(resp => resp.json())
+				.then(data => {
+					console.log(data)
+					setStore({horror_movies: data.results})
+				})
+
+				.catch(error => {
+					console.log(error);
+				});
+			},
+
+			getDramaMovies: () => {
+				const store = getStore();
+
+				fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIEDB_API_KEY}&vote_average.lte=5.2&sort_by=vote_average.asc&with_genres=10749&vote_average.gte=2&vote_count.gte=475`).then(resp => resp.json())
+				.then(data => {
+					console.log(data)
+					setStore({drama_movies: data.results})
+				})
+
+				.catch(error => {
+					console.log(error);
+				});
+			},
+
+			getActionMovies: () => {
+				const store = getStore();
+
+				fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIEDB_API_KEY}&vote_average.lte=5.2&sort_by=vote_average.asc&with_genres=28%2C%2012&vote_average.gte=2&vote_count.gte=750`).then(resp => resp.json())
+				.then(data => {
+					console.log(data)
+					setStore({action_movies: data.results})
+				})
+
+				.catch(error => {
+					console.log(error);
+				});
+			},
+
+			addToWatchlist: (movie) => {
+				const store = getStore();
+                const item_watchlist = store.watchlist.concat(movie);
+                setStore({ watchlist: item_watchlist });
+			},
+
+			deleteFromWatchlist: (index) => {
+				const store = getStore();
+                const item_watchlist = store.watchlist.filter((c, i) => {
+                    return index !== i
+                });
+                setStore({ watchlist: item_watchlist });
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -32,20 +92,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}catch(error){
 					console.log("Error loading message from backend", error)
 				}
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};

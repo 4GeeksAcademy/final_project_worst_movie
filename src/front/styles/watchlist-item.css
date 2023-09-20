@@ -1,0 +1,65 @@
+.main-wrapper {
+    margin: 30px;
+    margin-left: 50px;
+}
+
+.img-poster {
+    height: 135px;
+    box-shadow: 0 0 15px rgb(188, 249, 252);
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(29, 204, 204);
+}
+
+.img-poster:hover {
+    box-shadow: 0 0 22px rgb(188, 249, 252);
+}
+
+.watchlist-rating {
+    font-size: 15px;
+}
+
+.item-info {
+    background-color: rgb(35, 35, 35);
+    width: 100%;
+    color: white;
+    border-radius: 6px;
+}
+
+.yellow {
+    color: rgb(255, 255, 194);
+}
+
+.red {
+    color: rgb(255, 82, 82);
+}
+
+.trailer-button {
+    font-size: 14px;
+}
+
+.trailer-button:active {
+    font-weight: bold;
+}
+
+.trailer-button:hover {
+    text-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+.delete-icon {
+    color: red;
+    align-self: center;
+    display: none;
+}
+
+.delete-icon:hover {
+    text-shadow: 0 0 20px rgb(255, 99, 99);
+}
+
+.delete-icon:active {
+    color: rgb(150, 0, 0);
+}
+
+.item-info:hover .delete-icon {
+    display: block;
+}

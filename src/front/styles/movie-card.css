@@ -1,0 +1,61 @@
+.card {
+    background-color: rgb(35, 35, 35);
+    color: white;
+    border-radius: 5px;
+}
+
+.img-card {
+    object-fit: cover;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.679);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.yellow {
+    color: rgb(255, 255, 194);
+}
+
+.red {
+    color: rgb(255, 82, 82);
+}
+
+.info-button {
+    font-size: 12px;
+    height: 32px;
+    margin-left: 13px;
+}
+
+.lighter {
+    font-weight: lighter;
+}
+
+.lighter:hover {
+    text-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+.lighter:active {
+    font-weight: bold;
+}
+
+.movie_title {
+    margin-right: 55px;
+    height: 190px;
+    font-size: 20px;
+}
+
+.rating {
+    font-size: 16px;
+    font-style: italic;
+    align-self: center;
+}
+
+.content {
+    position: relative;
+}
+
+.card-bottom {
+    position: absolute;
+    bottom: 10px;
+}

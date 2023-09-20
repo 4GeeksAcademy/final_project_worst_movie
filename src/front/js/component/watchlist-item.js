@@ -1,0 +1,24 @@
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
+import "../../styles/watchlist-item.css";
+import { Context } from "../store/appContext";
+
+export const Watchlist_Item = (props) => {
+	const { store, actions } = useContext(Context);
+
+	return (
+			<div className="main-wrapper">
+                <div className="d-flex">
+					<img src={`https://image.tmdb.org/t/p/original${props.img_src}`} className="img-poster" alt="..."/>
+					<div className="item-info ms-3 d-flex justify-content-between">
+						<div className="m-4">
+							<h6><strong>{props.title}</strong></h6>
+							<p>{props.rating} / 10 <i className="watchlist-rating yellow fas fa-star"></i></p>
+							<h6 className="trailer-button"><i className="red fas fa-play-circle"></i> Watch Trailer</h6>
+						</div>
+						<i className="delete-icon fa-solid fa-delete-left me-4" onClick={() => actions.deleteFromWatchlist(props.index)}></i>
+					</div>
+				</div>
+			</div>
+	);
+};
