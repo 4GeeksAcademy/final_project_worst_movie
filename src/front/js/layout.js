@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
+import { Detail } from "./pages/detail";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -21,7 +22,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-
+                        <Route element={<Detail />} path="/detail/:movieId" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
