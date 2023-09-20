@@ -1,0 +1,12 @@
+.superFormWrappa2{
+    padding-left: 8cm;
+}
+.formWrappa2{
+    background-color: hsl(125, 51%, 17%);
+    height: 420px;
+    width: 725px;
+    border-radius: 6%;
+}
+.form-control{
+border-radius: 25%;
+}

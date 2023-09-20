@@ -4,10 +4,15 @@ import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
 import { Detail } from "./pages/detail";
+import{Login} from "./pages/login";
+import { Resset } from "./pages/resset";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+
+import{Registration} from "./pages/registration";
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -23,6 +28,9 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Detail />} path="/detail/:movieId" />
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<Registration />} path="/registration" />
+                        <Route element={<Resset/>} path="/resset" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
