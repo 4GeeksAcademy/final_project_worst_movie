@@ -9,7 +9,9 @@ export const Watchlist_Item = (props) => {
 	return (
 			<div className="main-wrapper">
                 <div className="d-flex">
-					<img src={`https://image.tmdb.org/t/p/original${props.img_src}`} className="img-poster" alt="..."/>
+					<Link to={`/detail/${props.id}`}>
+						<img src={`https://image.tmdb.org/t/p/original${props.img_src}`} className="img-poster" alt="..."/>
+					</Link>
 					<div className="item-info ms-3 d-flex justify-content-between">
 						<div className="m-4">
 							<h6><strong>{props.title}</strong></h6>
