@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState , useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
@@ -7,6 +7,10 @@ import { Watchlist_Item } from "../component/watchlist-item";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const [watchlist, setWatchlist] = useState([])
+	useEffect(() => {
+		actions.getWatchlistFromDB(setWatchlist)
+	}, [])
 
 	return (
 		<div className="main-wrapper mt-5">

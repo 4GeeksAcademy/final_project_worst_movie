@@ -54,6 +54,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			addToWatchlist: (movie) => {
+				let options={
+					method:'POST',
+					body: JSON.stringify({
+						author_id: 1,
+						movie_id: movie.id, 
+						movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie}
+					}),
+					headers: {
+						'Content-Type':'application/json'
+					}
+				}
+
+				fetch(`${process.env.BACKEND_URL}api/watchlist`, options)
+				.then(resp => resp.json())
+					.then(data => {
+						console.log(data)
+					})
+					.catch(error => {
+						console.log(error);
+					});
+
 				const store = getStore();
 				const item_watchlist = store.watchlist.concat(movie);
 				setStore({ watchlist: item_watchlist });
@@ -65,6 +86,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				setStore({ watchlist: item_watchlist });
 			},
+
+			getWatchlistFromDB: (setWatchlist) => {
+				fetch(`${process.env.BACKEND_URL}api/watchlist`)
+				.then(resp => resp.json())
+					.then(data => {
+						setWatchlist(data)
+					})
+					.catch(error => {
+						console.log(error);
+					});
+		   },
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
