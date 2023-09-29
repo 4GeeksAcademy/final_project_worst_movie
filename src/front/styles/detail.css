@@ -5,91 +5,87 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative;
 }
 
 .movie-details {
-    display: flex;
-    flex-direction: column;
+    max-width: 800px;
+    text-align: left;
+    margin-right: 280px;
 }
 
-.movie-info {
+.movie-info h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.movie-info span {
+    font-size: 1rem;
+    margin-left: 10px;
+    color: #ccc;
+}
+
+.title-rating-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.movie-info h1 {
-    margin-left: 166px;
+.rating p {
+    margin: 0;
 }
 
-.movie-info span {
-    font-size: 1rem;
-    margin-left: 210px;
+.rating {
+    display: flex;
+    align-items: center;
 }
 
-.movie-info button {
-    margin-left: 150; /* Set to 0 to align to the left */
-    padding: 8px 16px;
+.rating .react-star-rating__star {
+    font-size: 24px;
+    color: #FFD700;
+    margin-right: 5px;
+}
+
+.second-button button {
     background-color: #FFD700;
+    font-size: 1rem;
+    cursor: pointer;
+    color: black;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: black;
-}
-
-button {
-    margin-left: 800; /* Set to 0 to align to the left */
     padding: 8px 16px;
-    background-color: #FFD700;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: black;
 }
-
-
 
 .movie-info p {
-    margin-left: 166px;
+    margin-top: 5px;
 }
 
 .poster-video-container {
     display: flex;
     align-items: center;
+    margin-top: 20px;
 }
 
 .movie-poster img {
     max-width: 290px;
     border: 1px solid #ccc;
     margin-right: 20px;
-    margin-left: 166px;
 }
 
 .movie-video iframe {
     width: 760px;
-    height: 430px;
+    height: 440px;
     border: none;
-    
 }
 
-.movie-summary {
-    margin-left: 165px;
-}
-
+.movie-summary,
 .movie-cast {
-    margin-left: 165px;
-    margin-top: 5px;
-    color: white;
-    font-size: 1rem;
+    margin-top: 20px;
 }
 
-.movie-cast hr {
-    width: 100%;
-    border-top: 1px solid white;
-    margin-top: 3px;
-    margin-bottom: 5px;
+.movie-summary p,
+.movie-cast p {
+    margin-top: 5px;
 }
 
 .footer {
@@ -98,5 +94,3 @@ button {
     background-color: #222;
     margin-top: 20px;
 }
-
-/* End of detailStyles.css */
