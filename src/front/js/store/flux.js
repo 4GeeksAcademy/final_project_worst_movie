@@ -17,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			token:null,
 		},
 		actions: {
 			getHorrorMovies: () => {
@@ -223,7 +224,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password })
 				}
-				fetch(process.env.BACKEND_URL + '/api/login', options)
+				fetch(process.env.BACKEND_URL + 'api/login', options)
 				.then(response => {
 					if (response.ok) return response.json()
 					else throw Error('Something went wrong')
@@ -238,6 +239,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getToken: ()=>{
 				return localStorage.getItem("token")
+			},
+			logout:()=>{
+				return localStorage.removeItem("token");
 			},
 			resset: (email, password) => {
 				var options = {
