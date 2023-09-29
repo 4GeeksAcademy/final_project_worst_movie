@@ -4,9 +4,11 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Login, Movies, Watchlist, Movie_Rating, Comments
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token
+from flask_cors import cross_origin, CORS
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 api = Blueprint('api', __name__)
+CORS(api)
 
 
 @api.route('/hello', methods=['POST'])
@@ -61,34 +63,81 @@ def resset():
     
     db.session.commit()
     return jsonify({"msg": "Allrrrright!! User password resseted succesfully"}), 200
-   
+
+@api.route('/rate_movie', methods=['POST'])
+@jwt_required ()
+@cross_origin(supports_credentials=True)
+def rate_movie():
+    data = request.json 
+
+    
+    user_id= get_jwt_identity ()
+    movie = data.get('movie')
+    rating = data.get('rating')
+
+    
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'message': 'User not found'}), 404
+
+    movie_info = Movies.query.get(movie["id"])
+    if not movie_info:
+       new_movie=Movies(
+          id=movie["id"],     
+          title=movie["title"],
+          rating=movie["vote_average"],
+          image=movie ["image"],
+          ) 
+       db.session.add(new_movie)
+       db.session.commit()
+
+    try:
+        # Create a new movie rating
+        new_rating = Movie_Rating(user_id=user_id, movie_id=movie["id"], rating=rating)
+
+        
+        db.session.add(new_rating)
+        db.session.commit()
+
+        return jsonify({'message': 'Rating submitted successfully'}), 201
+
+    except Exception as e:
+        print (e)
+        return jsonify({'message': f'Error submitting rating: {str(e)}'}), 500
+
+@api.route('/movie_rating/<int:movie_id>', methods=['GET'])
+@jwt_required ()
+@cross_origin(supports_credentials=True)
+def movie_rating(movie_id):
+    user_id= get_jwt_identity ()
+    print(user_id,movie_id)
+    movie_rating = Movie_Rating.query.filter_by(user_id=user_id,movie_id=movie_id).first()
+    return jsonify(movie_rating.serialize()), 200
+ 
 @api.route('/watchlist', methods=['POST'])
 def addto_watchlist():
    if request.method == 'POST':
         print(request.get_json()['movie'])
         movie = Movies.query.filter_by(id=request.get_json()['movie_id']).first()
-        if movie is None: 
+        if movie is None:
            movie = Movies()
            movie.id=request.get_json()['movie_id']
            movie.title=request.get_json()['movie']['title']
            movie.rating=request.get_json()['movie']['rating']
            movie.image=request.get_json()['movie']['image']
-
            db.session.add(movie)
            db.session.commit()
-
         watchlist = Watchlist()
         watchlist.author_id = request.get_json()['author_id']
         watchlist.movie_id = request.get_json()['movie_id']
-
-
         db.session.add(watchlist)
         db.session.commit()
-
         # Show the updated version of the watchlist
         watchlist = []
         db_result = Watchlist.query.all()
         for item in db_result:
             watchlist.append(item.serialize())
         return jsonify(watchlist), 200
+
+    
   

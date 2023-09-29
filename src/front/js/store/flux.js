@@ -53,6 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
+			
 			addToWatchlist: (movie) => {
 				let options={
 					method:'POST',
@@ -143,6 +144,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error);
 				}
 			},
+			rateMovie: async (movie, rating) => {
+                try {
+					console.log(movie,rating)
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/rate_movie`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${getActions().getToken()}` 
+                        },
+                        body: JSON.stringify({  movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie}, rating })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.log(data); // Log the response from the server (optional)
+                        return data; // Return data if needed
+                    } else {
+                        console.log('Error rating movie:', response.status, response.statusText);
+                        return null; // Return null or handle the error as needed
+                    }
+                } catch (error) {
+                    console.log('Error rating movie:', error);
+                    return null; // Return null or handle the error as needed
+                }
+            },
+			getUserRating: (movieId,setUserRating) =>{
+				console.log("hello", getActions().getToken(),movieId )
+				const options = {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${getActions().getToken()}` 
+				},
+			};
+			fetch(`${process.env.BACKEND_URL}/api/movie_rating/${movieId}`,options)
+				.then(response => response.json())
+				.then(response => {
+					console.log(response);
+					if (response && response.rating) setUserRating(response.rating)
+				})
+				.catch(err => console.log(err));
+			},
+			
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -185,11 +229,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					else throw Error('Something went wrong')
 				})
 				.then(data => {
+					if (data && data.token) localStorage.setItem("token", data.token)
 					console.log(data)
 				})
 				.catch(error => {
 					console.log(error)
 				})
+			},
+			getToken: ()=>{
+				return localStorage.getItem("token")
 			},
 			resset: (email, password) => {
 				var options = {
