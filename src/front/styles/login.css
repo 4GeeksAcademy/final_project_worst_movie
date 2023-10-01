@@ -6,7 +6,7 @@
     on that page only (the ones not reused in other pages).
 */
 .superFormWrappa{
- 
+ padding-right: 8cm;
 }
 .formWrappal{
     background-color: hsl(125, 51%, 17%);
