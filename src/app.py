@@ -32,7 +32,7 @@ db.init_app(app)
 app.config["JWT_SECRET_KEY"] = "super-secret" 
 jwt = JWTManager(app)
 # Allow CORS requests to this API
-CORS(app,supports_credentials=True, origins=[os.getenv("FRONTEND_URL")])
+CORS(app, supports_credentials=True)
 
 # add the admin
 setup_admin(app)

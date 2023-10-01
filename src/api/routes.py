@@ -125,11 +125,14 @@ def addto_watchlist():
            movie.title=request.get_json()['movie']['title']
            movie.rating=request.get_json()['movie']['rating']
            movie.image=request.get_json()['movie']['image']
+
            db.session.add(movie)
            db.session.commit()
+
         watchlist = Watchlist()
         watchlist.author_id = request.get_json()['author_id']
         watchlist.movie_id = request.get_json()['movie_id']
+
         db.session.add(watchlist)
         db.session.commit()
         # Show the updated version of the watchlist
@@ -139,5 +142,16 @@ def addto_watchlist():
             watchlist.append(item.serialize())
         return jsonify(watchlist), 200
 
+@api.route('/watchlist', methods=['GET'])
+def getfrom_watchlist():
+    if request.method == 'GET':
+        watchlist_array = []
+        db_result = Movies.query.all()
+
+        for item in db_result:
+            watchlist_array.append(item.serialize())
+        return jsonify(watchlist_array), 200
+
+    return "Invalid Method", 404
+
     
-  

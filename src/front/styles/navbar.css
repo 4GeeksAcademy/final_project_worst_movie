@@ -1,5 +1,5 @@
 nav{
-    background-color: rgb(56, 5, 5);
+    background-color: rgb(37, 19, 19);
     border-style: groove;
     box-shadow: 1px 4px 15px rgb(164, 223, 208)
    
@@ -12,5 +12,17 @@ nav{
     text-shadow: 0 0 10px rgb(241, 242, 247),0 0 40px rgb(247, 248, 252),
     0 0 80px rgb(227, 228, 235);
     transition-delay: 1s;
- 
+}
+
+.logo {
+    height: 70px;
+    padding: 0;
+}
+
+.subtitle {
+    font-family: 'Bungee';
+    color: rgb(254, 254, 123);
+    text-shadow: 0 0 20px rgb(255, 249, 203);
+    font-size: 22px;
+    background-color: rgba(43, 40, 40, 0.737);
 }

@@ -1,7 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
+
+
 class User(db.Model):
-    __tablename__='user'
     __tablename__='user'
     id = db.Column(db.Integer, primary_key=True)
     username=db.Column(db.String(120), unique=True, nullable=False)
@@ -9,6 +10,10 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    watchlist = db.relationship('Watchlist', backref='user', lazy=True)
+    movie_rating = db.relationship('Movie_Rating', backref='user', lazy=True)
+    comments = db.relationship('Comments', backref='user', lazy=True)
+
     def __repr__(self):
         return f'<User {self.email}>'
     def serialize(self):
@@ -21,7 +26,6 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 class Login(db.Model):
-    __tablename__='login'
     __tablename__='login'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
@@ -48,6 +52,8 @@ class Movies(db.Model):
     description = db.Column(db.String(120), nullable=True)
     tagline = db.Column(db.String(120), nullable=True)
     image = db.Column(db.String(500), nullable=False)
+    watchlist = db.relationship('Watchlist', backref='movies', lazy=True)
+    movie_rating = db.relationship('Movie_Rating', backref='movies', lazy=True)
 
     def __repr__(self):
         return f'<Movies {self.title}>'
@@ -69,17 +75,15 @@ class Watchlist(db.Model):
     __tablename__='watchlist'
     id = db.Column(db.Integer, primary_key=True)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    title = db.Column(db.String(120), nullable=True)
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
 
     def __repr__(self):
-        return f'<Watchlist {self.title}>'
+        return f'<Watchlist {self.id}>'
 
     def serialize(self):
         return {
             "id": self.id,
             "author_id": self.author_id,
-            "title": self.title,
             "movie_id": self.movie_id
         }
 

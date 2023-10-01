@@ -15,9 +15,9 @@ export const Login = () => {
   };
 
 	return (
-        <form className="text-center"onSubmit={handleSubmit}>
-        <h1 className="text-light">Wellcome  to Your Best Worst Movie Log in.</h1>
-        <div className="superFormWrappa ">
+        <form className="text-center my-5"onSubmit={handleSubmit}>
+        <h1 className="text-light">Welcome  to Your Best Worst Movie Log in.</h1>
+        <div className="superFormWrappalogin p-0">
         <div className="formWrappal ">
         <div className="mb-3">
           <label for="exampleInputEmail1" className="form-label text-warning">Email address</label>
@@ -36,15 +36,15 @@ export const Login = () => {
         <button type="submit" className="btn btn-primary">Log in</button>
         </div>
         <Link to="/resset">
-          <p className="text-light">Forgot your username or password?</p>
+          <p className="text-light mt-3">Forgot your username or password?</p>
        </Link>
-         <p className="text-danger">
+         <p className="text-danger mt-5">
          Guess what? You're in the 'Not Registered' club! Time for a wild
           adventure—off to the registration form you go!
         </p>
         <div className="text-center">
        <Link to="/registration">
-       <button type="submit" className="btn btn-primary">Sign up.</button>
+       <button type="submit" className="btn btn-primary">Sign up</button>
        </Link>
         </div>
        </div>

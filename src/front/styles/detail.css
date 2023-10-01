@@ -1,11 +1,16 @@
 .page-content {
-    background-color: #111;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     position: relative;
+}
+
+.detail-title,
+.sub {
+    font-family: 'Bungee';
+    text-shadow: 0 0 20px rgba(255, 253, 236, 0.811);
 }
 
 .movie-details {
@@ -81,6 +86,7 @@
 .movie-summary,
 .movie-cast {
     margin-top: 20px;
+    width: 100%;
 }
 
 .movie-summary p,

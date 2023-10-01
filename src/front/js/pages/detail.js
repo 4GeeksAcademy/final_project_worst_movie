@@ -10,33 +10,33 @@ export const Detail = () => {
     const [movieInfo, setMovieInfo] = useState({});
     const [videoKey, setVideoKey] = useState();
 
-    const [userRating, setUserRating] = useState() 
+    const [userRating, setUserRating] = useState()
 
-   const handleAddToWatchlist = (movie) => {
-    actions.addToWatchlist(movie);
+    const handleAddToWatchlist = (movie) => {
+        actions.addToWatchlist(movie);
     };
 
     const handleRatingClick = (nextValue) => {
         setUserRating(nextValue);
-       //localStorage.setItem(`userRating-${params.movieId}`, nextValue.toString());
+        //localStorage.setItem(`userRating-${params.movieId}`, nextValue.toString());
         actions.rateMovie(movieInfo, nextValue);
     };
-    
+
     useEffect(() => {
         actions.getTrailerForMovie(params.movieId, setVideoKey);
         actions.getMovieById(params.movieId, setMovieInfo);
-        actions.getUserRating(params.movieId,setUserRating)
+        actions.getUserRating(params.movieId, setUserRating)
     }, [params.movieId, setMovieInfo, setVideoKey]);
 
     return (
-        <div className="page-content">
+        <div className="page-content mb-5">
             <div className="movie-details">
-                <div className="movie-info">
+                <div className="movie-info mt-5">
                     <div>
-                        <h1>{movieInfo.original_title}<span>({parseFloat(movieInfo.vote_average).toFixed(1)})</span></h1>
+                        <h1 className="detail-title mb-3">{movieInfo.original_title}<span>( <i className="yellow fas fa-star me-2"></i>{parseFloat(movieInfo.vote_average).toFixed(1)} )</span></h1>
                         <div className="action-buttons">
-                            <div className="rating">
-                                <p>Your Rating</p>
+                            <div className="rating mb-2">
+                                <p>Your Rating &nbsp;</p>
                                 <StarRatingComponent
                                     name="userRating"
                                     starCount={5}
@@ -46,7 +46,7 @@ export const Detail = () => {
                             </div>
                             <div className="second-button">
                                 <button
-                                    onClick={() => actions.addToWatchlist (movieInfo)}
+                                    onClick={() => actions.addToWatchlist(movieInfo)}
                                     disabled={store.watchlist.some(movie => movie.id === movieInfo.id)}
                                 >
                                     {store.watchlist.some(movie => movie.id === movieInfo.id) ? 'Added to Your Watchlist' : 'Add to Watchlist'}
@@ -74,17 +74,14 @@ export const Detail = () => {
                     </div>
                 </div>
                 <div className="movie-summary">
-                    <p>Genre: {movieInfo.genres && movieInfo.genres[0].name}</p>
+                    <p><span className="sub">Genre:</span> {movieInfo.genres && movieInfo.genres[0].name}</p>
                     <p>{movieInfo.overview}</p>
                 </div>
                 <hr />
                 <div className="movie-cast">
-                    <p>Tagline: {movieInfo.tagline}</p>
+                    <p><span className="sub">Tagline:</span> {movieInfo.tagline}</p>
                     <hr />
-                    <p> Budget: {movieInfo.budget} $</p>
-                </div>
-                <div className="footer">
-                    &copy; 2023 Your Movie App
+                    <p><span className="sub">Budget:</span> {movieInfo.budget} $</p>
                 </div>
             </div>
         </div>
