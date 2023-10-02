@@ -78,7 +78,7 @@ class Watchlist(db.Model):
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
 
     def __repr__(self):
-        return f'<Watchlist {self.id}>'
+        return f'<Watchlist {self.id} {self.movie_id}>'
 
     def serialize(self):
         return {

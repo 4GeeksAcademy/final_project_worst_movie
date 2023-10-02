@@ -6,18 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			drama_movies: [],
 			action_movies: [],
 			watchlist: [],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			token: null
 		},
 		actions: {
 			getHorrorMovies: () => {
@@ -58,12 +47,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let options={
 					method:'POST',
 					body: JSON.stringify({
-						author_id: 1,
 						movie_id: movie.id, 
 						movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie}
 					}),
 					headers: {
-						'Content-Type':'application/json'
+						'Content-Type':'application/json',
+						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
@@ -98,22 +87,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 		   },
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			getMessage: async () => {
-				try {
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				} catch (error) {
-					console.log("Error loading message from backend", error)
-				}
-			},
 			getMovieById: (movieId, setMovieDetail) => {
 				const options = {
 					method: 'GET',
@@ -185,19 +158,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (response && response.rating) setUserRating(response.rating)
 				})
 				.catch(err => console.log(err));
-			},
-			
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-				//reset the global store
-				setStore({ demo: demo });
 			},
 			signUp: (username, name, email, password) => {
 				var options = {
