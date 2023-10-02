@@ -27,11 +27,6 @@ export const Navbar = () => {
 								</ul>
 							</div>
 						</Link>
-						<div className="ml-auto">
-							<Link to="/login">
-								<button className="btn text-white btn-warning">Log in</button>
-							</Link>
-						</div>
 					</div>
 				</div>
 			</nav>
