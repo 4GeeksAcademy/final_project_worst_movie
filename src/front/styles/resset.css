@@ -1,7 +1,10 @@
 .superFormWrappa{
-    padding-left: 8cm;
-    padding-top: 1cm;
- }
+    margin-bottom: 170px;
+    margin-top: 120px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
  .formWrappa{
      background-color: hsl(125, 51%, 17%);
      border-radius: 6%;

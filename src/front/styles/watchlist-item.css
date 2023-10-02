@@ -36,6 +36,8 @@
 
 .trailer-button {
     font-size: 14px;
+    color: white;
+    text-decoration: none;
 }
 
 .trailer-button:active {

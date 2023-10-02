@@ -1,12 +1,25 @@
 .superFormWrappa2{
-    padding-left: 8cm;
+    text-align: -webkit-center;
+    margin-top: 35px;
+    margin-bottom: 50px;
 }
 .formWrappa2{
     background-color: hsl(125, 51%, 17%);
-    height: 420px;
-    width: 725px;
     border-radius: 6%;
+    padding-top: 10px;
+    padding-bottom: 27px;
+    margin-left: 150px;
+    margin-right: 150px;
 }
-.form-control{
+.form-control {
 border-radius: 25%;
+color: lightgrey;
+}
+
+.form-label {
+    margin-top: 10px;
+}
+
+.form-control:active {
+    color: black;
 }

@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Detail } from "./pages/detail";
 import{Login} from "./pages/login";
 import { Resset } from "./pages/resset";
+import { Trailer } from "./pages/trailer-single";
 
 import injectContext from "./store/appContext";
 
@@ -28,6 +29,7 @@ const Layout = () => {
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Detail />} path="/detail/:movieId" />
+                        <Route element={<Trailer />} path="/trailer/:movieId" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Resset/>} path="/resset" />

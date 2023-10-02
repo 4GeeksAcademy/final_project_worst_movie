@@ -5,13 +5,14 @@ import "../../styles/home.css";
 import { MovieCard } from "../component/movie-card";
 import { Watchlist_Item } from "../component/watchlist-item";
 
+
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const [watchlist, setWatchlist] = useState([])
 	useEffect(() => {
 		actions.getWatchlistFromDB(setWatchlist)
 	}, [])
-
+	
 	return (
 		<div className="main-wrapper mt-5">
 			<div className="wrapper-first-section">
@@ -113,8 +114,8 @@ export const Home = () => {
 									<button type="button" className="btn btn-light mt-5"><a className="button-link" href='#movies-selection'>Browse Movies!</a></button>
 								</div>
 							) : <div>
-								{store.watchlist?.map((movies, index) => (
-									<Watchlist_Item img_src={movies.img_src} title={movies.title} rating={movies.rating} index={index} id={movies.id}/>
+								{watchlist?.map((movies, index) => (
+									<Watchlist_Item img_src={movies.image} title={movies.title} rating={movies.rating} index={index} id={movies.id}/>
 								))} </div>
 							}
 						</div>

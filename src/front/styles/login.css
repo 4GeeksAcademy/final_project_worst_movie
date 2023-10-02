@@ -1,16 +1,14 @@
-/*
-    home.css: This website contains selectors only used in home.css
-
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
-.superFormWrappa{
- 
+.superFormWrappalogin{
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 60px;
+    margin-bottom: 30px;
 }
 .formWrappal{
     background-color: hsl(125, 51%, 17%);
     border-radius: 6%;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 
