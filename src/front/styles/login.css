@@ -4,6 +4,10 @@
     margin-top: 60px;
     margin-bottom: 30px;
 }
+ 
+.superFormWrappa{
+ padding-right: 8cm;
+}
 .formWrappal{
     background-color: hsl(125, 51%, 17%);
     border-radius: 6%;

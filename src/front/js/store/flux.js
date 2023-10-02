@@ -183,7 +183,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ email: email, password: password })
 				}
-				fetch(process.env.BACKEND_URL + '/api/login', options)
+				fetch(process.env.BACKEND_URL + 'api/login', options)
 				.then(response => {
 					if (response.ok) return response.json()
 					else throw Error('Something went wrong')
@@ -200,6 +200,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token=localStorage.getItem("token")
 				setStore({ token: token })
 				return token
+			},
+			logout:()=>{
+				return localStorage.removeItem("token");
 			},
 			resset: (email, password) => {
 				var options = {
