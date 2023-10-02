@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import "../../styles/detail.css";
+import {useNavigate} from "react-router-dom";
 import StarRatingComponent from 'react-star-rating-component';
 
 export const Detail = () => {
@@ -9,11 +10,21 @@ export const Detail = () => {
     const params = useParams();
     const [movieInfo, setMovieInfo] = useState({});
     const [videoKey, setVideoKey] = useState();
-
     const [userRating, setUserRating] = useState() 
+
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if(actions.getToken()){
+          console.log("Go ahead.")
+        }
+        else {
+          navigate('/login')
+        }
+      },[])
 
    const handleAddToWatchlist = (movie) => {
     actions.addToWatchlist(movie);
+    console.log("movieposter",movie.poster_path)
     };
 
     const handleRatingClick = (nextValue) => {
@@ -83,10 +94,7 @@ export const Detail = () => {
                     <hr />
                     <p> Budget: {movieInfo.budget} $</p>
                 </div>
-                <div className="footer">
-                    &copy; 2023 Your Movie App
-                </div>
-            </div>
+             </div>
         </div>
     );
 };

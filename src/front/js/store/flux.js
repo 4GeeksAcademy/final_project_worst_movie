@@ -237,7 +237,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 			getToken: ()=>{
-				return localStorage.getItem("token")
+				const token=localStorage.getItem("token")
+				setStore({ token: token })
+				return token
 			},
 			resset: (email, password) => {
 				var options = {
