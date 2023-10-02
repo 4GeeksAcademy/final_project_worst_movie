@@ -1,7 +1,6 @@
 import React, { useContext , useState , useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import {useNavigate} from "react-router-dom";
 
 import { MovieCard } from "../component/movie-card";
 import { Watchlist_Item } from "../component/watchlist-item";
@@ -14,16 +13,6 @@ export const Home = () => {
 		actions.getWatchlistFromDB(setWatchlist)
 	}, [])
 	
-	/*const navigate = useNavigate();
-	useEffect(()=>{
-	  if(store.token){
-		console.log("Go ahead.")
-	  }
-	  else {
-		navigate('/login')
-	  }
-	},[])*/
-
 	return (
 		<div className="main-wrapper mt-5">
 			<div className="wrapper-first-section">
