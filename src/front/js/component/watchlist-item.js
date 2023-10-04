@@ -20,7 +20,7 @@ export const Watchlist_Item = (props) => {
 								<h6 className="trailer-button"><i className="red fas fa-play-circle"></i> Watch Trailer</h6>
 							</Link>
 						</div>
-						<i className="delete-icon fa-solid fa-delete-left me-4" onClick={() => actions.deleteFromWatchlist(props.index)}></i>
+						<i className="delete-icon fa-solid fa-delete-left me-4" onClick={() => actions.deleteFromWatchlist(props, props.index)}></i>
 					</div>
 				</div>
 			</div>

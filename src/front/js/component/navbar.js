@@ -16,12 +16,12 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto">
 						<Link to="/login">
-							<div class="dropdown">
-								<button className="btn-outline btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-									Log in.
+							<div className="dropdown">
+								<button className="btn btn-warning dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Log in
 								</button>
-								<ul className="dropdown-menu">
-									<li><a className="dropdown-item text-danger" href="#" onClick={actions.logout}>Log out</a>
+								<ul className="dropdown-menu dropdown-menu-end">
+									<li className="text-end"><a className="dropdown-item text-danger" href="#" onClick={actions.logout}>Log out</a>
 									</li>
 
 								</ul>

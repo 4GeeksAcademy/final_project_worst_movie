@@ -1,17 +1,34 @@
 import React, { useContext , useState , useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import {useNavigate} from "react-router-dom";
 
 import { MovieCard } from "../component/movie-card";
 import { Watchlist_Item } from "../component/watchlist-item";
-
+import { BigTen } from "../component/big_ten";
+import { SmallTen } from "../component/small_ten";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	const [watchlist, setWatchlist] = useState([])
+	const [topTen, setTopten] = useState([])
+
 	useEffect(() => {
 		actions.getWatchlistFromDB(setWatchlist)
+		actions.getTopTen(setTopten)
+		actions.getToken()
+
 	}, [])
+
+	const nav = useNavigate();
+	useEffect(()=>{
+		if(store.token){
+			console.log("Go ahead.")
+		  }
+		  else {
+			nav('/login')
+		  }
+	  },[])
 	
 	return (
 		<div className="main-wrapper mt-5">
@@ -27,78 +44,13 @@ export const Home = () => {
 							</div>
 						</div>
 						<div className="topten-section">
-							<div className="image-wrapper">
-								<img className="main-topt-img" src="https://images.webapi.gc.blackpoolfcservices.co.uk/fit-in/1000x1000/4b7df6b0-8053-11ec-b799-ef66214b7928.png" alt="placeholder image" />
-								<div className="main-floating-title">
-									<h1>#1</h1>
-									<h3 className="bold-fl-title">Movie Title</h3>
-								</div>
-							</div>
-
+						{topTen.slice(0, 1).map((movies, index) => (
+									<BigTen image={movies.image} title={movies.title} id={movies.id}/>
+								))}
 							<div className="restof-topt-section row g-0">
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#2</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#3</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#4</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#5</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#6</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#7</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#8</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#9</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
-								<div className="col-4 image-wrapper">
-									<img className="sec-topt-img" src="https://simoneleighvenice2022.org/wp-content/themes/simoneleighvenice/assets/img/580x430.png" alt="placeholder image" />
-									<div className="floating-title">
-										<h4>#10</h4>
-										<h6 className="bold-fl-title">Movie Title</h6>
-									</div>
-								</div>
+							{topTen.slice(1).map((movies, index) => (
+									<SmallTen image={movies.image} title={movies.title} number={index+2} id={movies.id}/>
+								))}
 							</div>
 						</div>
 					</div>

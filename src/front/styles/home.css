@@ -39,20 +39,8 @@ body {
     margin-top: 80px;
 }
 
-.main-topt-img {
-    width: 97%;
-    margin: 10px;
-    object-fit: fill;
-}
-
 .restof-topt-section {
     width: 100%;
-}
-
-.sec-topt-img {
-    width: 92%;
-    margin: 10px;
-    object-fit: fill;
 }
 
 .main-icon {
@@ -77,49 +65,6 @@ body {
 
 .light-yellow {
     color: rgb(255, 255, 216);
-}
-
-.image-wrapper {
-    position: relative;
-    text-align: center;
-}
-
-.main-floating-title {
-    position: absolute;
-    color: white;
-    padding-top: 100px;
-    padding-left: 50px;
-    padding-bottom: 25px;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.85),
-        transparent
-    );
-    text-align: -webkit-left;
-}
-
-.floating-title {
-    position: absolute;
-    color: white;
-    padding-top: 30px;
-    padding-left: 40px;
-    padding-bottom: 15px;
-    bottom: 10px;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.85),
-        transparent
-    );
-    text-align: -webkit-left;
-}
-
-.bold-fl-title {
-    font-weight: lighter;
 }
 
 /*.bold-fl-title:hover {
@@ -192,7 +137,7 @@ body {
 }
 
 .watchlist-items {
-    height: 920px;
+    height: 1200px;
 }
 
 .watchlist-title {

@@ -74,7 +74,7 @@ class Movies(db.Model):
 class Watchlist(db.Model):
     __tablename__='watchlist'
     id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'), nullable=False)
 
     def __repr__(self):

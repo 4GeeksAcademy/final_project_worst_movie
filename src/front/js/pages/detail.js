@@ -22,10 +22,10 @@ export const Detail = () => {
         }
       },[])
 
-   const handleAddToWatchlist = (movie) => {
+   /*const handleAddToWatchlist = (movie) => {
     actions.addToWatchlist(movie);
     console.log("movieposter",movie.poster_path)
-    };
+    };*/
 
     const handleRatingClick = (nextValue) => {
         setUserRating(nextValue);
@@ -46,7 +46,7 @@ export const Detail = () => {
                     <div>
                         <h1 className="detail-title mb-3">{movieInfo.original_title}<span>( <i className="yellow fas fa-star me-2"></i>{parseFloat(movieInfo.vote_average).toFixed(1)} )</span></h1>
                         <div className="action-buttons">
-                            <div className="rating mb-2">
+                            <div className="rating mb-2 fs-4">
                                 <p>Your Rating &nbsp;</p>
                                 <StarRatingComponent
                                     name="userRating"
@@ -55,14 +55,14 @@ export const Detail = () => {
                                     onStarClick={handleRatingClick}
                                 />
                             </div>
-                            <div className="second-button">
+                            {/*<div className="second-button">
                                 <button
                                     onClick={() => actions.addToWatchlist(movieInfo)}
                                     disabled={store.watchlist.some(movie => movie.id === movieInfo.id)}
                                 >
                                     {store.watchlist.some(movie => movie.id === movieInfo.id) ? 'Added to Your Watchlist' : 'Add to Watchlist'}
                                 </button>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                     <div>

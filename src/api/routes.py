@@ -6,6 +6,7 @@ from api.models import db, User, Login, Movies, Watchlist, Movie_Rating, Comment
 from api.utils import generate_sitemap, APIException
 from flask_cors import cross_origin, CORS
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from statistics import fmean
 
 api = Blueprint('api', __name__)
 CORS(api)
@@ -101,13 +102,36 @@ def rate_movie():
         db.session.add(new_rating)
         db.session.commit()
 
-        movies_avg = Movie_Rating(movie_id=movie["id"])
+        ratings = Movie_Rating.query.filter_by(movie_id=movie['id']).all()
+        print(ratings)
+        rating_sum = 0
+
+        for item in ratings:
+            rating_sum = rating_sum + item.rating
+
+        average = rating_sum/len(ratings)
+
+        movie_to_update = Movies.query.get(movie['id'])
+        movie_to_update.rating = average
+        db.session.commit()
 
         return jsonify({'message': 'Rating submitted successfully'}), 201
 
     except Exception as e:
         print(e)
         return jsonify({'message': f'Error submitting rating: {str(e)}'}), 500
+    
+@api.route('/top_ten', methods=['GET'])
+def movie_avg():
+    if request.method == 'GET':
+        ratings = []
+        movies = Movies.query.filter().order_by(Movies.rating.asc()).limit(10)
+        for item in movies:
+            ratings.append(item.serialize())
+
+        return jsonify(ratings), 200
+    
+    return "Invalid Method", 404
 
 
 @api.route('/movie_rating/<int:movie_id>', methods=['GET'])
@@ -122,9 +146,9 @@ def movie_rating(movie_id):
 
 
 @api.route('/watchlist', methods=['POST'])
+@jwt_required()
 def addto_watchlist():
     if request.method == 'POST':
-        print(request.get_json()['movie'])
         movie = Movies.query.filter_by(
             id=request.get_json()['movie_id']).first()
         if movie is None:
@@ -137,24 +161,22 @@ def addto_watchlist():
             db.session.add(movie)
             db.session.commit()
 
-        # watchlist = Watchlist.query.filter_by(
-            # id=Watchlist.movie_id, author_id=get_jwt_identity()).first()
-        # if watchlist is None:
-            watchlist = Watchlist()
-            watchlist.author_id = get_jwt_identity()
-            watchlist.movie_id = request.get_json()['movie_id']
+        watchlist = Watchlist()
+        watchlist.author_id = get_jwt_identity()
+        watchlist.movie_id = request.get_json()['movie_id']
 
-            db.session.add(watchlist)
-            db.session.commit()
-            # Show the updated version of the watchlist
-            watchlist = []
-            db_result = Watchlist.query.all()
-            for item in db_result:
-                watchlist.append(item.serialize())
-            return jsonify(watchlist), 200
+        db.session.add(watchlist)
+        db.session.commit()
+        # Show the updated version of the watchlist
+        watchlist = []
+        db_result = Watchlist.query.all()
+        for item in db_result:
+            watchlist.append(item.serialize())
+        return jsonify(watchlist), 200
 
 
 @api.route('/watchlist', methods=['GET'])
+@jwt_required()
 def getfrom_watchlist():
     if request.method == 'GET':
         watchlist = Watchlist.query.filter_by(author_id=get_jwt_identity()).all()
@@ -176,6 +198,7 @@ def getfrom_watchlist():
 
 
 @api.route('/watchlist/<int:movie_id>', methods=['DELETE'])
+@jwt_required
 def deletefrom_watchlist(movie_id):
     if request.method == 'DELETE':
         watchlist = Watchlist.query.filter_by(movie_id=movie_id, author_id=get_jwt_identity()).first()

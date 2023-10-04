@@ -42,7 +42,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(error);
 					});
 			},
-			
 			addToWatchlist: (movie) => {
 				let options={
 					method:'POST',
@@ -69,16 +68,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const item_watchlist = store.watchlist.concat(movie);
 				setStore({ watchlist: item_watchlist });
 			},
-			deleteFromWatchlist: (index) => {
+			deleteFromWatchlist: (movie, index) => {
+				let options={
+					method:'DELETE',
+					body: JSON.stringify({
+						movie_id: movie.id
+					}),
+					headers: {
+						'Content-Type':'application/json',
+						'Authorization': `Bearer ${getActions().getToken()}`
+					}
+				}
+
+				fetch(`${process.env.BACKEND_URL}api/watchlist/<int:movie_id>`, options)
+				.then(resp => resp.json())
+					.then(data => {
+						console.log(data)
+					})
+					.catch(error => {
+						console.log(error);
+					});
+
 				const store = getStore();
 				const item_watchlist = store.watchlist.filter((c, i) => {
 					return index !== i
 				});
 				setStore({ watchlist: item_watchlist });
 			},
-
 			getWatchlistFromDB: (setWatchlist) => {
-				fetch(`${process.env.BACKEND_URL}api/watchlist`)
+				let options={
+					method:'GET',
+					headers: {
+						'Content-Type':'application/json',
+						'Authorization': `Bearer ${getActions().getToken()}`
+					}
+				}
+
+				fetch(`${process.env.BACKEND_URL}api/watchlist`, options)
 				.then(resp => resp.json())
 					.then(data => {
 						setWatchlist(data)
@@ -86,7 +112,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.log(error);
 					});
-		   },
+		    },
+			getTopTen: (setTopTen) => {
+				let options={
+					method:'GET',
+					headers: {
+						'Content-Type':'application/json',
+						'Authorization': `Bearer ${getActions().getToken()}`
+					}
+				}
+
+				fetch(`${process.env.BACKEND_URL}api/top_ten`, options)
+				.then(resp => resp.json())
+					.then(data => {
+						setTopTen(data)
+					})
+					.catch(error => {
+						console.log(error);
+					});
+			},
 			getMovieById: (movieId, setMovieDetail) => {
 				const options = {
 					method: 'GET',

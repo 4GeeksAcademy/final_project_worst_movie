@@ -1,0 +1,51 @@
+.image-wrapper {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.image-wrapper:hover .sec-topt-img {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+
+}
+
+.image-wrapper:hover .floating-title {
+    text-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+.image-wrapper:hover .bold-fl-title {
+    font-weight: bold;
+}
+
+.sec-topt-img {
+    width: 92%;
+    height: 210px;
+    margin: 10px;
+    object-fit: cover;
+    object-position: 100% 15%
+}
+
+.floating-title {
+    position: absolute;
+    color: white;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-bottom: 15px;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        transparent
+    );
+    text-align: -webkit-left;
+}
+
+.bold-fl-title {
+    font-weight: lighter;
+}
