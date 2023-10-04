@@ -198,7 +198,7 @@ def getfrom_watchlist():
 
 
 @api.route('/watchlist/<int:movie_id>', methods=['DELETE'])
-@jwt_required
+@jwt_required()
 def deletefrom_watchlist(movie_id):
     if request.method == 'DELETE':
         watchlist = Watchlist.query.filter_by(movie_id=movie_id, author_id=get_jwt_identity()).first()

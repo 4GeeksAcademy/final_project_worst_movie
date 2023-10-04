@@ -59,41 +59,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(resp => resp.json())
 					.then(data => {
 						console.log(data)
+						const store = getStore();
+						console.log(store.watchlist)
+						const item_watchlist = store.watchlist.concat(movie);
+						setStore({ watchlist: item_watchlist });
 					})
 					.catch(error => {
 						console.log(error);
 					});
-
-				const store = getStore();
-				const item_watchlist = store.watchlist.concat(movie);
-				setStore({ watchlist: item_watchlist });
 			},
 			deleteFromWatchlist: (movie, index) => {
 				let options={
 					method:'DELETE',
-					body: JSON.stringify({
-						movie_id: movie.id
-					}),
 					headers: {
 						'Content-Type':'application/json',
 						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
-				fetch(`${process.env.BACKEND_URL}api/watchlist/<int:movie_id>`, options)
+				fetch(`${process.env.BACKEND_URL}api/watchlist/${movie.id}`, options)
 				.then(resp => resp.json())
 					.then(data => {
 						console.log(data)
+						const store = getStore();
+						console.log(store.watchlist)
+						const item_watchlist = store.watchlist.filter((c, i) => {
+						return c.id !== movie.id
+				});
+				setStore({ watchlist: item_watchlist });
 					})
 					.catch(error => {
 						console.log(error);
 					});
-
-				const store = getStore();
-				const item_watchlist = store.watchlist.filter((c, i) => {
-					return index !== i
-				});
-				setStore({ watchlist: item_watchlist });
 			},
 			getWatchlistFromDB: (setWatchlist) => {
 				let options={
