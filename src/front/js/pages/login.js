@@ -28,7 +28,7 @@ export const Login = () => {
         </div>
         <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label text-warning">Password</label>
-          <input type="password" className="form-control" 
+          <input type="password" className="form-control " 
            placeholder="Type your password here" 
            id="exampleInputPassword1"onChange={(e) => setPassword(e.target.value)}/>
         </div>

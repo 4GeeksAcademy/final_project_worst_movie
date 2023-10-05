@@ -1,5 +1,5 @@
 nav{
-    background-color: rgb(37, 19, 19);
+    background-color: rgba #000000;
     border-style: groove;
     box-shadow: 1px 4px 15px rgb(164, 223, 208)
    
@@ -7,11 +7,12 @@ nav{
 nav{
     border-radius: 15%;
 }
-.btn{
+.dropdown{
     border-radius: 15%;
     text-shadow: 0 0 10px rgb(241, 242, 247),0 0 40px rgb(247, 248, 252),
     0 0 80px rgb(227, 228, 235);
-    transition-delay: 1s;
+    box-shadow: 1px 4px 15px rgb(164, 223, 208)
+   
 }
 
 .logo {

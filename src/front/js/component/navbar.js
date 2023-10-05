@@ -16,8 +16,8 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto">
 						<Link to="/login">
-							<div class="dropdown">
-								<button className="btn-outline btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<div className="dropdown">
+								<button className="btn btn-outline dropdown-toggle text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Log in.
 								</button>
 								<ul className="dropdown-menu">
