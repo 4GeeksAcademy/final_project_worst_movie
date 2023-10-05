@@ -20,31 +20,31 @@ export const Login = () => {
         <div className="superFormWrappalogin p-0">
         <div className="formWrappal ">
         <div className="mb-3">
-          <label for="exampleInputEmail1" className="form-label text-warning">Email address</label>
-          <input type="email" className="form-control" 
+          <label for="exampleInputEmail1" className="form-label text-light">Email address</label>
+          <input type="email" className="form-control bg-dark " 
           placeholder="Type your email adress here" id="exampleInputEmail1" 
           aria-describedby="emailHelp"onChange={(e) => setEmail(e.target.value)}/>
           <div id="emailHelp" className="form-text text-light">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label for="exampleInputPassword1" className="form-label text-warning">Password</label>
-          <input type="password" className="form-control " 
+          <label for="exampleInputPassword1" className="form-label text-light">Password</label>
+          <input type="password" className="form-control bg-dark" 
            placeholder="Type your password here" 
            id="exampleInputPassword1"onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <div className="text-center">
-        <button type="submit" className="btn btn-primary">Log in</button>
+        <button type="submit" className="btn btn-outline text-light">Log in</button>
         </div>
         <Link to="/resset">
           <p className="text-light mt-3">Forgot your username or password?</p>
        </Link>
-         <p className="text-danger mt-5">
+         <p className="text-warning mt-5">
          Guess what? You're in the 'Not Registered' club! Time for a wild
           adventure—off to the registration form you go!
         </p>
         <div className="text-center">
        <Link to="/registration">
-       <button type="submit" className="btn btn-primary">Sign up</button>
+       <button type="submit" className="btn btn-outline text-light">Sign up</button>
        </Link>
         </div>
        </div>

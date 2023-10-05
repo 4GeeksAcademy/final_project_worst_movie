@@ -17,20 +17,20 @@ export const Resset = () => {
         <form className="text-center" onSubmit={handleSubmit}>
             <div className="superFormWrappa">
                 <div className="formWrappa pt-4">
-                    <p className="text-danger">
+                    <p className="text-warning">
                         -Suspense music-  Oh Lord!...Have you...
                         forgotten your... password?!!!!!-Tension, pain..
                         .-Or... do you... need to... reset it?
                     </p>
-                    <input type="email" className="form-control my-5"
+                    <input type="email" className="form-control bg-dark my-5"
                         placeholder="Type here your email adress to resset your password"
                         id="exampleInputEmail1" aria-describedby="emailHelp"
                         onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" className="form-control mb-5"
+                    <input type="password" className="form-control bg-dark mb-5"
                         placeholder="Type here your new password"
                         id="exampleInputEmail1" aria-describedby="emailHelp"
                         onChange={(e) => setPassword(e.target.value)} />
-                    <button type="submit" className="btn btn-primary mb-4">Resset</button>
+                    <button type="submit" className="btn btn-outline text-light mb-4">Resset</button>
                 </div>
             </div>
         </form>
