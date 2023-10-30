@@ -1,23 +1,24 @@
-.image-wrapper {
+.big-image-wrapper {
     position: relative;
     text-align: center;
     overflow: hidden;
+    border-radius: 20px;
 }
 
-.image-wrapper:hover .main-topt-img {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+.big-image-wrapper:hover {
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -o-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
 
 }
 
-.image-wrapper:hover .main-floating-title {
+.big-image-wrapper:hover .main-floating-title {
     text-shadow: 0 0 15px rgb(255, 255, 255);
 }
 
-.image-wrapper:hover .bold-fl-title {
+.big-image-wrapper:hover .bold-fl-title {
     font-weight: bold;
 }
 
@@ -27,6 +28,7 @@
     height: 500px;
     object-fit: cover;
     object-position: 100% 35%;
+    border-radius: 20px;
 }
 
 .main-floating-title {
@@ -34,6 +36,7 @@
     color: white;
     padding-top: 100px;
     padding-left: 50px;
+    padding-right: 20px;
     padding-bottom: 25px;
     bottom: 10px;
     left: 0;

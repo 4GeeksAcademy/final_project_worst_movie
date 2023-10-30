@@ -12,11 +12,11 @@ export const SmallTen = (props) => {
         <div className="col-4 image-wrapper">
             <Link to={`/detail/${props.id}`}>
                 <img className="sec-topt-img" src={props.image} alt="placeholder image" />
-			</Link>
-            <div className="floating-title">
-                <h4>#{props.number}</h4>
-                <h6 className="bold-fl-title">{props.title}</h6>
-            </div>
+                <div className="floating-title">
+                    <h4>#{props.number}</h4>
+                    <h6 className="bold-fl-title">{props.title}</h6>
+                </div>
+            </Link>
         </div>
     );
 };

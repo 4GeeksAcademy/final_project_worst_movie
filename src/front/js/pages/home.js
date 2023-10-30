@@ -1,7 +1,7 @@
 import React, { useContext , useState , useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 import { MovieCard } from "../component/movie-card";
 import { Watchlist_Item } from "../component/watchlist-item";
@@ -14,21 +14,15 @@ export const Home = () => {
 	const [topTen, setTopten] = useState([])
 
 	useEffect(() => {
-		actions.getWatchlistFromDB(setWatchlist)
+		if (actions.getToken()) {
+			actions.getWatchlistFromDB(setWatchlist);
+		}
 		actions.getTopTen(setTopten)
 		actions.getToken()
 
 	}, [])
 
 	const nav = useNavigate();
-	useEffect(()=>{
-		if(store.token){
-			console.log("Go ahead.")
-		  }
-		  else {
-			nav('/login')
-		  }
-	  },[])
 	
 	return (
 		<div className="main-wrapper mt-5">
@@ -58,30 +52,40 @@ export const Home = () => {
 						<h2 className="title text-center mt-5">What to watch</h2>
 						<h1 className="light-yellow title text-center mb-3 watchlist-title">Watchlist</h1>
 						<div className="watchlist-items y-scrollbar">
-							{store.watchlist.length === 0 ? (
+							{store.token && store.watchlist.length === 0 ? (
 								<div className="empty-watchlist text-center mt-5 mx-4">
 									<i className="fa-solid fa-bookmark fs-1 mb-4"></i>
 									<h3><strong>Your watchlist is empty</strong></h3>
 									<h5>Save some movies you want to watch here!</h5>
-									<button type="button" className="btn btn-light mt-5"><a className="button-link" href='#movies-selection'>Browse Movies!</a></button>
+									<button type="button" className="btn btn-light watchlist-btn mt-5"><a className="button-link" href='#movies-selection'>Browse Movies!</a></button>
 								</div>
 							) : <div>
 								{watchlist?.map((movies, index) => (
 									<Watchlist_Item img_src={movies.image} title={movies.title} rating={movies.rating} index={index} id={movies.id}/>
 								))} </div>
 							}
+							{!store.token ? (
+								<div className="watchlist-signin empty-watchlist text-center mt-5 mx-4">
+									<i className="fa-solid fa-bookmark fs-1 mb-4"></i>
+									<h4 className="mb-3"><strong>Looks like you're not <br></br>logged in!</strong></h4>
+									<h5>Sign in or register to add some movies to your watchlist!</h5>
+									<Link to='/login'>
+										<button type="button" className="watchlist-signin-btn btn btn-outline-light mt-4">Go to Sign In!</button>
+									</Link>
+								</div>
+							) : ""}
 						</div>
 					</div>
 				</div>
 
 			</div>
 			<div className="wrapper-second-section me-3 mt-5">
-				<div className="d-flex">
-					<i className="icon fas fa-film"></i>
-					<div>
-						<h2 className="main-title">Want some <span className="italic really-bad-text">really bad</span> movie recommendations? </h2>
-						<h2 className="purple-title main-title mb-4">We got you!</h2>
-						<p id="movies-selection" className="main-title fs-5">What are you in the mood for?</p>
+				<div className="d-flex really-bad-section">
+					<i className="film-icon fas fa-film"></i>
+					<div className="really-bad-section">
+						<h2 className="bad-title main-title">Want some <span className="italic really-bad-text">really bad</span> movie recommendations? </h2>
+						<h2 className="purple-title bad-title main-title mb-4">We got you!</h2>
+						<p id="movies-selection" className="main-title bad-sub">What are you in the mood for?</p>
 					</div>
 				</div>
 

@@ -13,14 +13,6 @@ export const Detail = () => {
     const [userRating, setUserRating] = useState() 
 
     const navigate = useNavigate();
-    useEffect(()=>{
-        if(actions.getToken()){
-          console.log("Go ahead.")
-        }
-        else {
-          navigate('/login')
-        }
-      },[])
 
    /*const handleAddToWatchlist = (movie) => {
     actions.addToWatchlist(movie);

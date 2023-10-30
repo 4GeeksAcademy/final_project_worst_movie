@@ -16,7 +16,7 @@ export const Watchlist_Item = (props) => {
 						<div className="m-4">
 							<h6><strong>{props.title}</strong></h6>
 							<p>{props.rating} / 10 <i className="watchlist-rating yellow fas fa-star"></i></p>
-							<Link to={`/trailer/${props.id}`}>
+							<Link to={`/trailer/${props.id}`} style={{ textDecoration: 'none' }}>
 								<h6 className="trailer-button"><i className="red fas fa-play-circle"></i> Watch Trailer</h6>
 							</Link>
 						</div>

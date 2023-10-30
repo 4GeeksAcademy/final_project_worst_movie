@@ -58,6 +58,14 @@ body {
     margin-left: 20px;
 }
 
+.film-icon {
+    font-size: 165px;
+    color: rgb(255, 236, 93);
+    text-shadow: 0 0 20px rgb(255, 243, 156);
+    margin-right: 35px;
+    margin-left: 20px;
+}
+
 .purple-title {
     color: rgb(133, 81, 210);
     text-shadow: 0 0 40px rgb(210, 194, 233)
@@ -133,7 +141,7 @@ body {
 .sidebar-section {
     background-color: rgb(30, 30, 30);
     /*width: 35%;*/
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .watchlist-items {
@@ -146,6 +154,16 @@ body {
 
 .empty-watchlist {
     color: rgba(235, 235, 235, 0.87);
+}
+
+.watchlist-btn {
+    border-radius: 20px;
+    font-family: 'Bungee';
+}
+
+.watchlist-signin-btn {
+    border-radius: 20px;
+    text-shadow: 0 0 15px rgb(255, 255, 255);
 }
 
 .button-link {
@@ -162,3 +180,25 @@ body {
     color: rgb(213, 213, 213);
     text-shadow: 0 0 20px rgba(235, 232, 232, 0.551);
 }
+
+.bad-sub {
+    font-size: 25px;
+}
+
+@media only screen and (max-width: 700px) {
+    .really-bad-section {
+        margin-right: 30px;
+    }
+
+    .film-icon {
+        font-size: 110px;
+    }
+
+    .bad-title {
+        font-size: 23px;
+    }
+
+    .bad-sub {
+        font-size: 18px;
+    }
+  }

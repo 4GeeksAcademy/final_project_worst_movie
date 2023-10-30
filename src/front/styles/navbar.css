@@ -7,7 +7,7 @@ nav{
 nav{
     border-radius: 15%;
 }
-.btn{
+.navbar-btn{
     border-radius: 15%;
     text-shadow: 0 0 10px rgb(241, 242, 247),0 0 40px rgb(247, 248, 252),
     0 0 80px rgb(227, 228, 235);

@@ -110,9 +110,10 @@ def rate_movie():
             rating_sum = rating_sum + item.rating
 
         average = rating_sum/len(ratings)
+        rounded_avg = round(average, 1)
 
         movie_to_update = Movies.query.get(movie['id'])
-        movie_to_update.rating = average
+        movie_to_update.rating = rounded_avg
         db.session.commit()
 
         return jsonify({'message': 'Rating submitted successfully'}), 201
