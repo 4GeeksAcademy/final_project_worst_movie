@@ -43,20 +43,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			addToWatchlist: (movie) => {
-				let options={
-					method:'POST',
+				let options = {
+					method: 'POST',
 					body: JSON.stringify({
-						movie_id: movie.id, 
-						movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie}
+						movie_id: movie.id,
+						movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie }
 					}),
 					headers: {
-						'Content-Type':'application/json',
+						'Content-Type': 'application/json',
 						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
 				fetch(`${process.env.BACKEND_URL}api/watchlist`, options)
-				.then(resp => resp.json())
+					.then(resp => resp.json())
 					.then(data => {
 						console.log(data)
 						const store = getStore();
@@ -69,58 +69,58 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			deleteFromWatchlist: (movie, index) => {
-				let options={
-					method:'DELETE',
+				let options = {
+					method: 'DELETE',
 					headers: {
-						'Content-Type':'application/json',
+						'Content-Type': 'application/json',
 						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
 				fetch(`${process.env.BACKEND_URL}api/watchlist/${movie.id}`, options)
-				.then(resp => resp.json())
+					.then(resp => resp.json())
 					.then(data => {
 						console.log(data)
 						const store = getStore();
 						console.log(store.watchlist)
 						const item_watchlist = store.watchlist.filter((c, i) => {
-						return c.id !== movie.id
-				});
-				setStore({ watchlist: item_watchlist });
+							return c.id !== movie.id
+						});
+						setStore({ watchlist: item_watchlist });
 					})
 					.catch(error => {
 						console.log(error);
 					});
 			},
 			getWatchlistFromDB: (setWatchlist) => {
-				let options={
-					method:'GET',
+				let options = {
+					method: 'GET',
 					headers: {
-						'Content-Type':'application/json',
+						'Content-Type': 'application/json',
 						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
 				fetch(`${process.env.BACKEND_URL}api/watchlist`, options)
-				.then(resp => resp.json())
+					.then(resp => resp.json())
 					.then(data => {
 						setWatchlist(data)
 					})
 					.catch(error => {
 						console.log(error);
 					});
-		    },
+			},
 			getTopTen: (setTopTen) => {
-				let options={
-					method:'GET',
+				let options = {
+					method: 'GET',
 					headers: {
-						'Content-Type':'application/json',
+						'Content-Type': 'application/json',
 						'Authorization': `Bearer ${getActions().getToken()}`
 					}
 				}
 
 				fetch(`${process.env.BACKEND_URL}api/top_ten`, options)
-				.then(resp => resp.json())
+					.then(resp => resp.json())
 					.then(data => {
 						setTopTen(data)
 					})
@@ -158,47 +158,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error);
 				}
 			},
-			rateMovie: async (movie, rating) => {
-                try {
-					console.log(movie,rating)
-                    const response = await fetch(`${process.env.BACKEND_URL}/api/rate_movie`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${getActions().getToken()}` 
-                        },
-                        body: JSON.stringify({  movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie}, rating })
-                    });
+			rateMovie: async (movie, rating, movie_poster) => {
+				try {
+					console.log("---------------------", movie, rating)
+					const response = await fetch(`${process.env.BACKEND_URL}api/rate_movie`, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${getActions().getToken()}`
+						},
+						body: JSON.stringify({ movie: { image: `https://image.tmdb.org/t/p/original${movie_poster}`, ...movie }, rating })
+					});
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        console.log(data); // Log the response from the server (optional)
-                        return data; // Return data if needed
-                    } else {
-                        console.log('Error rating movie:', response.status, response.statusText);
-                        return null; // Return null or handle the error as needed
-                    }
-                } catch (error) {
-                    console.log('Error rating movie:', error);
-                    return null; // Return null or handle the error as needed
-                }
-            },
-			getUserRating: (movieId,setUserRating) =>{
-				console.log("hello", getActions().getToken(),movieId )
+					if (response.ok) {
+						const data = await response.json();
+						console.log(data); // Log the response from the server (optional)
+						return data; // Return data if needed
+					} else {
+						console.log('Error rating movie:', response.status, response.statusText);
+						return null; // Return null or handle the error as needed
+					}
+				} catch (error) {
+					console.log('Error rating movie:', error);
+					return null; // Return null or handle the error as needed
+				}
+			},
+			getUserRating: (movieId, setUserRating) => {
+				console.log("hello", getActions().getToken(), movieId)
 				const options = {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${getActions().getToken()}` 
-				},
-			};
-			fetch(`${process.env.BACKEND_URL}/api/movie_rating/${movieId}`,options)
-				.then(response => response.json())
-				.then(response => {
-					console.log(response);
-					if (response && response.rating) setUserRating(response.rating)
-				})
-				.catch(err => console.log(err));
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${getActions().getToken()}`
+					},
+				};
+				fetch(`${process.env.BACKEND_URL}/api/movie_rating/${movieId}`, options)
+					.then(response => response.json())
+					.then(response => {
+						console.log(response);
+						if (response && response.rating) setUserRating(response.rating)
+					})
+					.catch(err => console.log(err));
 			},
 			signUp: (username, name, email, password) => {
 				var options = {
@@ -207,16 +207,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({ username: username, name: name, email: email, password: password })
 				}
 				fetch(process.env.BACKEND_URL + '/api/registration', options)
-				.then(response => {
-					if (response.ok) return response.json()
-					else throw Error('Something went wrong')
-				})
-				.then(data => {
-					console.log(data)
-				})
-				.catch(error => {
-					console.log(error)
-				})
+					.then(response => {
+						if (response.ok) return response.json()
+						else throw Error('Something went wrong')
+					})
+					.then(data => {
+						console.log(data)
+					})
+					.catch(error => {
+						console.log(error)
+					})
 			},
 			logIn: (email, password) => {
 				var options = {
@@ -225,24 +225,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({ email: email, password: password })
 				}
 				fetch(process.env.BACKEND_URL + 'api/login', options)
-				.then(response => {
-					if (response.ok) return response.json()
-					else throw Error('Something went wrong')
-				})
-				.then(data => {
-					if (data && data.token) localStorage.setItem("token", data.token)
-					console.log(data)
-				})
-				.catch(error => {
-					console.log(error)
-				})
+					.then(response => {
+						if (response.ok) return response.json()
+						else throw Error('Something went wrong')
+					})
+					.then(data => {
+						if (data && data.token) localStorage.setItem("token", data.token)
+						console.log(data)
+					})
+					.catch(error => {
+						console.log(error)
+					})
 			},
-			getToken: ()=>{
-				const token=localStorage.getItem("token")
+			getToken: () => {
+				const token = localStorage.getItem("token")
 				setStore({ token: token })
 				return token
 			},
-			logout:()=>{
+			logout: () => {
 				return localStorage.removeItem("token");
 			},
 			resset: (email, password) => {
@@ -252,16 +252,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify({ email: email, password: password })
 				}
 				fetch(process.env.BACKEND_URL + 'api/resset', options)
-				.then(response => {
-					if (response.ok) return response.json()
-					else throw Error('Something went wrong')
-				})
-				.then(data => {
-					console.log(data)
-				})
-				.catch(error => {
-					console.log(error)
-				})
+					.then(response => {
+						if (response.ok) return response.json()
+						else throw Error('Something went wrong')
+					})
+					.then(data => {
+						console.log(data)
+					})
+					.catch(error => {
+						console.log(error)
+					})
 			}
 		}
 	}

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import "../../styles/detail.css";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import StarRatingComponent from 'react-star-rating-component';
 
 export const Detail = () => {
@@ -10,19 +10,25 @@ export const Detail = () => {
     const params = useParams();
     const [movieInfo, setMovieInfo] = useState({});
     const [videoKey, setVideoKey] = useState();
-    const [userRating, setUserRating] = useState() 
+    const [userRating, setUserRating] = useState()
 
     const navigate = useNavigate();
 
-   /*const handleAddToWatchlist = (movie) => {
-    actions.addToWatchlist(movie);
-    console.log("movieposter",movie.poster_path)
-    };*/
+    /*const handleAddToWatchlist = (movie) => {
+     actions.addToWatchlist(movie);
+     console.log("movieposter",movie.poster_path)
+     };*/
 
     const handleRatingClick = (nextValue) => {
-        setUserRating(nextValue);
-        //localStorage.setItem(`userRating-${params.movieId}`, nextValue.toString());
-        actions.rateMovie(movieInfo, nextValue);
+        if (store.token) {
+            setUserRating(nextValue)
+            //localStorage.setItem(`userRating-${params.movieId}`, nextValue.toString());
+            actions.rateMovie(movieInfo, nextValue, movieInfo.poster_path)
+            console.log(nextValue, store.token)
+
+            return true
+        }
+        alert("Rating not posted! Please, sign in or register first! :)")
     };
 
     useEffect(() => {
