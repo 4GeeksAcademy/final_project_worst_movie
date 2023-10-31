@@ -21,24 +21,24 @@ export const Registration=()=>{
        <div className=" formWrappa2 mb-3">
        <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label text-warning">Username</label>
-          <input type="text" className="form-control" placeholder=
+          <input type="text" className="form-control input-reg" placeholder=
           
            "Type your username" id="exampleInputPassword1" onChange={(e) => setUserName(e.target.value)}
            />
           </div>
           <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label text-warning">Name</label>
-          <input type="text" className="form-control" placeholder="Type your name" 
+          <input type="text" className="form-control input-reg" placeholder="Type your name" 
           id="exampleInputPassword1" onChange={(e) => setName(e.target.value)}/>
           </div>
           <label for="exampleInputEmail1" className="form-label text-warning">Email address</label>
-          <input type="email" className="form-control" 
+          <input type="email" className="form-control input-reg" 
           placeholder="Type your email" id="exampleInputEmail1" 
           aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)}/>
           <div id="emailHelp" className="form-text mt-2">We'll never share your email with anyone else.</div>
           <div className="mb-3">
           <label for="exampleInputPassword1" className="form-label text-warning">Password</label>
-          <input type="password" className="form-control" 
+          <input type="password" className="form-control input-reg" 
           placeholder="Type your password" 
           id="exampleInputPassword1" onChange={(e) => setPassword(e.target.value)}/>
           </div>

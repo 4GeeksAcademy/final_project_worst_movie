@@ -11,7 +11,7 @@
     margin-left: 150px;
     margin-right: 150px;
 }
-.form-control {
+.input-reg {
 border-radius: 25%;
 color: lightgrey;
 }
@@ -20,6 +20,6 @@ color: lightgrey;
     margin-top: 10px;
 }
 
-.form-control:active {
+.input-reg:active {
     color: black;
 }

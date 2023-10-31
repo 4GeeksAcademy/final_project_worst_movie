@@ -22,11 +22,11 @@ export const Resset = () => {
                         forgotten your... password?!!!!!-Tension, pain..
                         .-Or... do you... need to... reset it?
                     </p>
-                    <input type="email" className="form-control my-5"
+                    <input type="email" className="form-control input-reset my-5"
                         placeholder="Type here your email adress to resset your password"
                         id="exampleInputEmail1" aria-describedby="emailHelp"
                         onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" className="form-control mb-5"
+                    <input type="password" className="form-control input-reset mb-5"
                         placeholder="Type here your new password"
                         id="exampleInputEmail1" aria-describedby="emailHelp"
                         onChange={(e) => setPassword(e.target.value)} />

@@ -14,8 +14,8 @@ export const Watchlist_Item = (props) => {
 					</Link>
 					<div className="item-info ms-3 d-flex justify-content-between">
 						<div className="m-4">
-							<h6><strong>{props.title}</strong></h6>
-							<p>{props.rating} / 10 <i className="watchlist-rating yellow fas fa-star"></i></p>
+							<h6 className="watchlist-item-title"><strong>{props.title}</strong></h6>
+							<p className="watchlist-rating">{props.rating} / 10 <i className="yellow fas fa-star"></i></p>
 							<Link to={`/trailer/${props.id}`} style={{ textDecoration: 'none' }}>
 								<h6 className="trailer-button"><i className="red fas fa-play-circle"></i> Watch Trailer</h6>
 							</Link>

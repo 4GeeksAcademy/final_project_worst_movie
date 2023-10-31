@@ -1,6 +1,6 @@
 .main-wrapper {
     margin: 30px;
-    margin-left: 50px;
+    margin-left: 40px;
 }
 
 .img-poster {
@@ -21,8 +21,12 @@
     transform: scale(1.04);
 }
 
+.watchlist-item-title {
+    font-size: 14px;
+}
+
 .watchlist-rating {
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .item-info {
@@ -41,7 +45,7 @@
 }
 
 .trailer-button {
-    font-size: 14px;
+    font-size: 13px;
     color: white;
     text-decoration: none;
 }
