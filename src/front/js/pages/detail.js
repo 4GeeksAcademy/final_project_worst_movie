@@ -53,14 +53,9 @@ export const Detail = () => {
                                     onStarClick={handleRatingClick}
                                 />
                             </div>
-                            {/*<div className="second-button">
-                                <button
-                                    onClick={() => actions.addToWatchlist(movieInfo)}
-                                    disabled={store.watchlist.some(movie => movie.id === movieInfo.id)}
-                                >
-                                    {store.watchlist.some(movie => movie.id === movieInfo.id) ? 'Added to Your Watchlist' : 'Add to Watchlist'}
-                                </button>
-                            </div>*/}
+                            <div className="second-button mt-2 mb-2">
+                                <button onClick={() => { store.token ? actions.addToWatchlist(movieInfo) : alert("Please, sign in or register first! :)") }} disabled={store.watchlist.some(movie => movie.id === movieInfo.id)} className="details-watchlist-btn btn-light"> {store.watchlist.some(movie => movie.id === movieInfo.id) ? 'Added to Your Watchlist' : 'Add to Watchlist'} </button>
+                            </div>
                         </div>
                     </div>
                     <div>
