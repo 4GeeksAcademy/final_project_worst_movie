@@ -11,12 +11,12 @@ export const MovieCard = (props) => {
 	return (
 			<div className="card-wrapper container d-flex row">
                 <div className="card p-0 col-3 mx-2">
-                    <img src={`https://image.tmdb.org/t/p/original${props.img_src}`} className="img-card" alt="..."/>
+                    <img src={`https://image.tmdb.org/t/p/original${props.poster_path}`} className="img-card" alt="..."/>
                     <div className="card-body m-2 content">
                         <h4 className="card-title movie_title mb-3">{props.title}</h4>
                         <div className="card-bottom">
                             <div className="d-flex mb-3">
-                                <p className="rating m-0 p-0">{props.rating} / 10 <i className="yellow fas fa-star ms-2"></i></p>
+                                <p className="rating m-0 p-0">{props.vote_average} / 10 <i className="yellow fas fa-star ms-2"></i></p>
                                 <Link to={`/detail/${props.id}`}>
                                 <button type="button" className="info-button btn btn-outline-light">More Info!</button>
                                 </ Link>

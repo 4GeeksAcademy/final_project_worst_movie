@@ -156,7 +156,7 @@ def addto_watchlist():
             movie = Movies()
             movie.id = request.get_json()['movie_id']
             movie.title = request.get_json()['movie']['title']
-            movie.rating = request.get_json()['movie']['rating']
+            movie.rating = request.get_json()['movie']['vote_average']
             movie.image = request.get_json()['movie']['image']
 
             db.session.add(movie)

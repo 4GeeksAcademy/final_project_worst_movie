@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: 'POST',
 					body: JSON.stringify({
 						movie_id: movie.id,
-						movie: { image: `https://image.tmdb.org/t/p/original${movie.img_src}`, ...movie }
+						movie: { image: `https://image.tmdb.org/t/p/original${movie.poster_path}`, ...movie }
 					}),
 					headers: {
 						'Content-Type': 'application/json',
